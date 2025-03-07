@@ -1,0 +1,15 @@
+# MySQL data directory
+lampstack/mysql/
+
+
+# Log files
+*.log
+lampstack/logs/
+
+
+# HTML logs
+lampstack/html/
+
+# System files
+.DS_Store
+Thumbs.db 
