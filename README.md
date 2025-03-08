@@ -18,4 +18,6 @@ The code should be setup as below:
 ```
 The html directory is where the app for testing is placed, such as Wordpress.
 
+The ports.conf file sets apache to run on port 8000.   
+
 Everything runs as the local user, so sudo access is not needed.  
