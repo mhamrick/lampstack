@@ -1,9 +1,7 @@
 #!/bin/bash
 #!/bin/bash
 echo -e "Building Apache PHP image"
-id=$(buildah from --pull php:apache-bookworm)
-buildah run $id docker-php-ext-install pdo pdo_mysql mysqli
-buildah commit $id php-apache-build
+podman build -t php-apache-build .
 
 
 # Create a pod for the LAMP stack
