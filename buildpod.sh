@@ -5,6 +5,7 @@ MYSQL_ROOT_PASSWORD=arootpassword
 MYSQL_DATABASE=lampdb 
 MYSQL_USER=lamper
 MYSQL_PASSWORD=somepassword 
+BASEDIR=~/lampstack/lampstack
 
 
 
@@ -23,17 +24,17 @@ podman run -d \
   -e MYSQL_USER=${MYSQL_USER} \
   -e MYSQL_PASSWORD=${MYSQL_PASSWORD}  \
   -e MYSQL_DATABASE=${MYSQL_DATABASE} \
-  --volume ~/lampstack/lampstack/mysql:/var/lib/mysql \
+  --volume ${BASEDIR}/mysql:/var/lib/mysql \
   docker.io/library/mariadb:latest
 
 # Create Apache/PHP container
 podman run -d \
   --pod lampstack \
   --name apache \
-  -v ~/lampstack/lampstack/html:/var/www/html \
-  -v ~/lampstack/lampstack/logs:/var/log/apache2 \
-  -v ~/lampstack/lampstack/ports.conf:/etc/apache2/ports.conf \
-  -v ~/lampstack/lampstack/uploads.ini:/usr/local/etc/php/conf.d/uploads.ini \
+  -v ${BASEDIR}/html:/var/www/html \
+  -v ${BASEDIR}/logs:/var/log/apache2 \
+  -v ${BASEDIR}/ports.conf:/etc/apache2/ports.conf \
+  -v ${BASEDIR}/uploads.ini:/usr/local/etc/php/conf.d/uploads.ini \
   php-apache-build
 
 
